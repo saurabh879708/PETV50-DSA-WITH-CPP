@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allocation Process - Scholarship Allocation Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Scholarship Optimizer</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="data-input.html" class="nav-link">Data Input</a>
+                <a href="criteria.html" class="nav-link">Criteria</a>
+                <a href="allocation.html" class="nav-link active">Allocation</a>
+                <a href="results.html" class="nav-link">Results</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2>Allocation Process</h2>
+            <p>Watch the intelligent allocation algorithm in action</p>
+        </div>
+        
+        <div class="allocation-container">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-play-circle"></i>
+                    <h3>Start Allocation</h3>
+                </div>
+                <div class="allocation-controls">
+                    <button id="startAllocation" class="btn btn-primary btn-large">
+                        <i class="fas fa-play"></i>
+                        Start Allocation Process
+                    </button>
+                    <button id="resetAllocation" class="btn btn-secondary">
+                        <i class="fas fa-redo"></i>
+                        Reset
+                    </button>
+                </div>
+                
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span id="progressText">Ready to start</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-list"></i>
+                    <h3>Allocation Status</h3>
+                </div>
+                <div class="table-container">
+                    <table id="allocationTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Roll</th>
+                                <th>Score</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Allocation Summary -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Allocation Summary</h3>
+                </div>
+                <div class="allocation-summary">
+                    <div class="summary-item">
+                        <span>Total Students:</span>
+                        <span id="totalStudents">0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Eligible Students:</span>
+                        <span id="eligibleStudents">0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Scholarships Available:</span>
+                        <span id="availableScholarships">5</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Allocated:</span>
+                        <span id="allocatedCount">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="page-navigation">
+            <a href="criteria.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Back to Criteria
+            </a>
+            <a href="results.html" class="btn btn-primary" id="viewResultsBtn" style="display: none;">
+                View Results
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Scholarship Allocation Optimizer. Built with ❤️ for fair education.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
