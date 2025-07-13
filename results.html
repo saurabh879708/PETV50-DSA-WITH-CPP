@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results & Analytics - Scholarship Allocation Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Scholarship Optimizer</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="data-input.html" class="nav-link">Data Input</a>
+                <a href="criteria.html" class="nav-link">Criteria</a>
+                <a href="allocation.html" class="nav-link">Allocation</a>
+                <a href="results.html" class="nav-link active">Results</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2>Allocation Results</h2>
+            <p>Comprehensive analysis and visualization of scholarship distribution</p>
+        </div>
+        
+        <div class="results-container">
+            <!-- Search and Filters -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-search"></i>
+                    <h3>Search & Filter</h3>
+                </div>
+                <div class="search-filters">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search by name, roll, or category...">
+                    </div>
+                    <div class="filters">
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="Allocated">Allocated</option>
+                            <option value="Not Selected">Not Selected</option>
+                        </select>
+                        <select id="categoryFilter">
+                            <option value="">All Categories</option>
+                            <option value="General">General</option>
+                            <option value="SC">SC</option>
+                            <option value="ST">ST</option>
+                            <option value="OBC">OBC</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Table -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    <h3>Allocation Results</h3>
+                    <div class="header-actions">
+                        <button class="btn btn-secondary" id="exportCSV">
+                            <i class="fas fa-download"></i>
+                            Export CSV
+                        </button>
+                        <button class="btn btn-secondary" id="exportPDF">
+                            <i class="fas fa-file-pdf"></i>
+                            Export PDF
+                        </button>
+                        <button class="btn btn-secondary" id="printResults">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table id="resultsTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Name</th>
+                                <th>Roll</th>
+                                <th>Category</th>
+                                <th>Income</th>
+                                <th>Marks</th>
+                                <th>Score</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts-container">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-pie"></i>
+                        <h3>Category Distribution</h3>
+                    </div>
+                    <canvas id="categoryPie" width="300" height="300"></canvas>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Income vs Scholarships</h3>
+                    </div>
+                    <canvas id="incomeBar" width="300" height="300"></canvas>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Score Analysis</h3>
+                    </div>
+                    <canvas id="scoreLine" width="300" height="300"></canvas>
+                </div>
+            </div>
+
+            <!-- Results Summary -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Results Summary</h3>
+                </div>
+                <div class="results-summary">
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Total Students</h4>
+                                <span id="totalStudentsCount">0</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Allocated</h4>
+                                <span id="allocatedStudentsCount">0</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Success Rate</h4>
+                                <span id="successRate">0%</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="summary-content">
+                                <h4>Avg Score</h4>
+                                <span id="averageScore">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="page-navigation">
+            <a href="allocation.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Back to Allocation
+            </a>
+            <a href="index.html" class="btn btn-primary">
+                Back to Home
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Scholarship Allocation Optimizer. Built with ❤️ for fair education.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
