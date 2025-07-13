@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criteria Setup - Scholarship Allocation Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Scholarship Optimizer</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="data-input.html" class="nav-link">Data Input</a>
+                <a href="criteria.html" class="nav-link active">Criteria</a>
+                <a href="allocation.html" class="nav-link">Allocation</a>
+                <a href="results.html" class="nav-link">Results</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2>Scholarship Criteria Setup</h2>
+            <p>Configure allocation parameters and weightage for different criteria</p>
+        </div>
+        
+        <div class="criteria-container">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Criteria Weightage</h3>
+                </div>
+                <form id="criteriaForm" class="form">
+                    <div class="weight-sliders">
+                        <div class="slider-group">
+                            <label>
+                                <span>Academic Marks</span>
+                                <span class="slider-value" id="marksVal">40%</span>
+                            </label>
+                            <input type="range" name="marks" min="0" max="100" value="40" class="slider" data-target="marksVal">
+                        </div>
+                        <div class="slider-group">
+                            <label>
+                                <span>Family Income</span>
+                                <span class="slider-value" id="incomeVal">30%</span>
+                            </label>
+                            <input type="range" name="income" min="0" max="100" value="30" class="slider" data-target="incomeVal">
+                        </div>
+                        <div class="slider-group">
+                            <label>
+                                <span>Category</span>
+                                <span class="slider-value" id="categoryVal">10%</span>
+                            </label>
+                            <input type="range" name="category" min="0" max="100" value="10" class="slider" data-target="categoryVal">
+                        </div>
+                        <div class="slider-group">
+                            <label>
+                                <span>Extracurricular</span>
+                                <span class="slider-value" id="extraVal">10%</span>
+                            </label>
+                            <input type="range" name="extracurricular" min="0" max="100" value="10" class="slider" data-target="extraVal">
+                        </div>
+                    </div>
+                    
+                    <div class="criteria-settings">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Number of Scholarships</label>
+                                <input type="number" name="numScholarships" value="5" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label>Minimum Marks (%)</label>
+                                <input type="number" name="minMarks" value="60" min="0" max="100">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Maximum Income (₹)</label>
+                                <input type="number" name="maxIncome" value="800000" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Merit Rank Weight</label>
+                                <input type="number" name="rankWeight" value="10" min="0" max="100">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Criteria
+                    </button>
+                </form>
+            </div>
+
+            <!-- Criteria Preview -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-eye"></i>
+                    <h3>Criteria Preview</h3>
+                </div>
+                <div class="criteria-preview">
+                    <div class="preview-item">
+                        <span>Total Weightage:</span>
+                        <span id="totalWeightage">90%</span>
+                    </div>
+                    <div class="preview-item">
+                        <span>Scholarships Available:</span>
+                        <span id="scholarshipsAvailable">5</span>
+                    </div>
+                    <div class="preview-item">
+                        <span>Eligibility Range:</span>
+                        <span id="eligibilityRange">60% - 100% marks, ≤₹8,00,000 income</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="page-navigation">
+            <a href="data-input.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Back to Data Input
+            </a>
+            <a href="allocation.html" class="btn btn-primary">
+                Next: Start Allocation
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Scholarship Allocation Optimizer. Built with ❤️ for fair education.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
