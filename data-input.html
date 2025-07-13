@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Input - Scholarship Allocation Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Scholarship Optimizer</span>
+            </div>
+            <div class="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="data-input.html" class="nav-link active">Data Input</a>
+                <a href="criteria.html" class="nav-link">Criteria</a>
+                <a href="allocation.html" class="nav-link">Allocation</a>
+                <a href="results.html" class="nav-link">Results</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2>Student Data Management</h2>
+            <p>Add students manually or upload bulk data via CSV file</p>
+        </div>
+        
+        <div class="data-container">
+            <!-- Manual Entry -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Add Student Manually</h3>
+                </div>
+                <form id="studentForm" class="form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Roll Number</label>
+                            <input type="text" name="roll" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select name="gender" required>
+                                <option value="">Select Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select name="category" required>
+                                <option value="">Select Category</option>
+                                <option>General</option>
+                                <option>SC</option>
+                                <option>ST</option>
+                                <option>OBC</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Family Income (₹)</label>
+                            <input type="number" name="income" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Academic Marks (%)</label>
+                            <input type="number" name="marks" min="0" max="100" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Merit Rank</label>
+                            <input type="number" name="rank" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Extracurricular Score</label>
+                            <input type="number" name="extracurricular" min="0" max="10" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Add Student
+                    </button>
+                </form>
+            </div>
+
+            <!-- Bulk Upload -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-upload"></i>
+                    <h3>Bulk Upload</h3>
+                </div>
+                <div class="upload-area">
+                    <div class="upload-zone" id="uploadZone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop CSV file here or click to browse</p>
+                        <input type="file" id="csvInput" accept=".csv" hidden>
+                    </div>
+                    <button class="btn btn-secondary" id="downloadSample">
+                        <i class="fas fa-download"></i>
+                        Download Sample CSV
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Students Table -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-table"></i>
+                <h3>Student List</h3>
+                <span class="student-count" id="studentCount">0 students</span>
+            </div>
+            <div class="table-container">
+                <table id="studentsTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll</th>
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>Category</th>
+                            <th>Income</th>
+                            <th>Marks</th>
+                            <th>Rank</th>
+                            <th>Extracurricular</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="page-navigation">
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <a href="criteria.html" class="btn btn-primary">
+                Next: Setup Criteria
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Scholarship Allocation Optimizer. Built with ❤️ for fair education.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
